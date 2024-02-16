@@ -7,5 +7,13 @@
 </head>
 <body>
     <h1 style="color: blueviolet" th:text="${helloKey}"></h1>
+
+    <a href="" th:href="@{/add}">get to add page</a>
+
+    <div th:object="${todo}">
+        <span th:text="'id : ' + *{id}">...</span>
+        <span th:text="'task : ' + *{task}">...</span>
+        <span th:text="'status : ' + *{status}">...</span>
+    </div>
 </body>
 </html>
