@@ -18,5 +18,35 @@
     <span th:text="'task : ' + *{task}">...</span>
     <span th:text="'status : ' + *{status}">...</span>
 </div>
+
+<hr/>
+
+<div>
+    <p th:if="${gender} == 'male'">我是男生</p>
+    <p th:if="${gender} == 'female'">我是女生</p>
+</div>
+
+<hr/>
+
+<ul th:each="i:${list}">
+    <li th:text="${i}">
+    </li>
+</ul>
+
+<hr>
+
+<form action="#" th:action="@{/add}" th:object="${todo}" method="post">
+    <label>
+        <input type="text" th:field="*{id}"/>
+    </label>
+    <label>
+        <input type="text" th:field="*{task}"/>
+    </label>
+    <label>
+        <input type="text" th:field="*{status}"/>
+    </label>
+    <input type="submit"/>
+</form>
+
 </body>
 </html>
