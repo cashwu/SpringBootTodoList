@@ -1,5 +1,5 @@
 
-@host=http://localhost:9100
+@host=http://localhost:9100/api
 
 GET {{host}}
 
@@ -9,7 +9,26 @@ GET {{host}}/todo
 
 ###
 
+GET {{host}}/todo/1
+
+###
+
 POST {{host}}/todo
+Content-Type:  application/json
 
+{
+   "task" : "{{$random.alphabetic(10)}}"
+}
 
+###
 
+PUT {{host}}/todo/1
+Content-Type: application/json
+
+{
+  "task" : "{{$random.alphabetic(10)}}"
+}
+
+###
+
+DELETE {{host}}/todo/1
