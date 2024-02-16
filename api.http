@@ -1,0 +1,15 @@
+
+@host=http://localhost:9100
+
+GET {{host}}
+
+###
+
+GET {{host}}/todo
+
+###
+
+POST {{host}}/todo
+
+
+
