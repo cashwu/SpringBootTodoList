@@ -22,6 +22,6 @@ public class TodoService {
 
     public void saveTodo() {
 
-        todoDao.save(new Todo(1, "test", 1));
+//        todoDao.save(new Todo(1, "test", 1));
     }
 }

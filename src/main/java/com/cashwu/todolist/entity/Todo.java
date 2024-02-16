@@ -26,11 +26,4 @@ public class Todo {
     public Todo() {
 
     }
-
-    public Todo(Integer id, String task, Integer status) {
-        this.id = id;
-        this.task = task;
-        this.status = status;
-    }
-
 }
