@@ -36,27 +36,21 @@ public class TodoService {
 
     public Boolean updateTodo(Integer id, Todo todo) {
 
-        var optionalTodo = todoDao.findById(id);
-
-        if (optionalTodo.isEmpty()) {
-            return false;
-        }
-
-        var oldTodo = optionalTodo.get();
-        oldTodo.setTask(todo.getTask());
-        oldTodo.setStatus(todo.getStatus());
-
-        todoDao.save(oldTodo);
-        return true;
+        return todoDao.findById(id)
+                .map(oldTodo -> {
+                    oldTodo.setTask(todo.getTask());
+                    oldTodo.setStatus(todo.getStatus());
+                    todoDao.save(oldTodo);
+                    return true;
+                }).orElse(false);
     }
 
     public Boolean deleteTodo(Integer id) {
-        Optional<Todo> oldTodo = todoDao.findById(id);
 
-        if (oldTodo.isEmpty()) {
-            return false;
-        }
-        todoDao.deleteById(id);
-        return true;
+        return todoDao.findById(id)
+                .map(oldTodo -> {
+                    todoDao.deleteById(id);
+                    return true;
+                }).orElse(false);
     }
 }

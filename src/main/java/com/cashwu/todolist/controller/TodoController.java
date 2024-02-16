@@ -31,12 +31,13 @@ public class TodoController {
     }
 
     @GetMapping("/todo/{id}")
-    public ResponseEntity<Optional<Todo>> todo(@PathVariable Integer id) {
+    public ResponseEntity<Todo> todo(@PathVariable Integer id) {
 
         Optional<Todo> todo = todoService.getTodo(id);
 
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(todo);
+        return todo.map(value -> ResponseEntity.status(HttpStatus.OK).body(value))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
+
     }
 
     @PostMapping("/todo")
@@ -52,7 +53,7 @@ public class TodoController {
         boolean isSuccess = todoService.updateTodo(id, todo);
 
         if (isSuccess) {
-            return ResponseEntity.status(HttpStatus.OK).body("");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("");
         }
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
