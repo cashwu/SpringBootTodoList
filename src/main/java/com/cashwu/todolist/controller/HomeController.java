@@ -20,11 +20,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String index() {
-
-//        todoService.saveTodo();
-
-        Iterable<Todo> todo = todoService.getTodo();
-        System.out.println(todo.toString());
         return "Hello World";
     }
 
