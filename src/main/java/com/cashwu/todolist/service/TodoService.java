@@ -4,6 +4,9 @@ import com.cashwu.todolist.dao.TodoDao;
 import com.cashwu.todolist.entity.Todo;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 /**
  * @author cash
  */
@@ -20,8 +23,9 @@ public class TodoService {
         return todoDao.findAll();
     }
 
-    public void saveTodo() {
+    public void saveTodo(Todo todo) {
 
-//        todoDao.save(new Todo(1, "test", 1));
+        todo.setCreateTime(LocalDateTime.now());
+        todoDao.save(todo);
     }
 }

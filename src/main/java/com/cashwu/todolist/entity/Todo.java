@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 /**
  * @author cash
  */
@@ -21,7 +24,8 @@ public class Todo {
     private String task;
     @Column
     private Integer status;
-
+    @Column
+    private LocalDateTime createTime;
 
     public Todo() {
 

@@ -1,6 +1,7 @@
 package com.cashwu.todolist.controller;
 
 import com.cashwu.todolist.entity.Todo;
+import com.cashwu.todolist.service.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,12 @@ import java.util.ArrayList;
  */
 @Controller
 public class AppController {
+    private final TodoService todoService;
+
+    public AppController(TodoService todoService) {
+        this.todoService = todoService;
+    }
+
     @GetMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("helloKey", "Hello World ~");
@@ -36,10 +43,22 @@ public class AppController {
         return "hello";
     }
 
-    @PostMapping("/add")
-    public String add(@ModelAttribute Todo todo, Model model) {
-        model.addAttribute("todo", todo);
-        return "add";
+    @GetMapping("/todo")
+    public String getTodo(Model model) {
+        model.addAttribute("todoList", todoService.getTodo());
+        model.addAttribute("todo", new Todo());
+
+        return "todo";
+    }
+
+    @PostMapping("/todo")
+    public String saveTodo(@ModelAttribute Todo todo, Model model) {
+
+        todoService.saveTodo(todo);
+        model.addAttribute("todoList", todoService.getTodo());
+        model.addAttribute("todo", new Todo());
+
+        return "todo";
     }
 
 }
