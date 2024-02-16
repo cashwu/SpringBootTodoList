@@ -1,21 +1,22 @@
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="tw">
+<html xmlns:th="http://www.thymeleaf.org"
+      th:lang="${#locale.language}"
+      th:xmllang="${#locale.language}">
 <head>
     <meta http-equiv="content-type" content="text/html charset=utf-8">
     <title>Hello</title>
 </head>
 <body>
-    <h1 style="color: blueviolet" th:text="${helloKey}"></h1>
+<h1 style="color: blueviolet" th:text="${helloKey}"></h1>
 
-    <h2 th:text="#{welcome}"></h2>
+<h2 th:text="#{welcome}"></h2>
 
-    <a href="" th:href="@{/add}">get to add page</a>
+<a href="" th:href="@{/add}">get to add page</a>
 
-    <div th:object="${todo}">
-        <span th:text="'id : ' + *{id}">...</span>
-        <span th:text="'task : ' + *{task}">...</span>
-        <span th:text="'status : ' + *{status}">...</span>
-    </div>
+<div th:object="${todo}">
+    <span th:text="'id : ' + *{id}">...</span>
+    <span th:text="'task : ' + *{task}">...</span>
+    <span th:text="'status : ' + *{status}">...</span>
+</div>
 </body>
 </html>
