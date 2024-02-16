@@ -1,0 +1,2 @@
+INSERT INTO TODO (ID,TASK, STATUS)
+values (11, 'task-999', 1);
