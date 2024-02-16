@@ -30,17 +30,13 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
 
-//    testRuntimeOnly 'org.springframework.boot:spring-boot-starter-test'
+    testCompileOnly 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
-    // Mockito
-//    testImplementation 'org.mockito:mockito-inline:5.2.0'
-//    testImplementation 'org.mockito:mockito-junit-jupiter:5.10.0'
     testImplementation 'org.mockito:mockito-core:3.+'
 
-    // AssertJ
-//    testImplementation "org.assertj:assertj-core:$assertJVersion"
+    testImplementation 'org.assertj:assertj-core:3.+'
 }
 
 test {
