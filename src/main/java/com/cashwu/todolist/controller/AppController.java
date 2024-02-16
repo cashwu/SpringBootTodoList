@@ -43,7 +43,7 @@ public class AppController {
         return "hello";
     }
 
-    @GetMapping("/todo")
+    @GetMapping("/app/todo")
     public String getTodo(Model model) {
         model.addAttribute("todoList", todoService.getTodo());
         model.addAttribute("todo", new Todo());
@@ -51,14 +51,14 @@ public class AppController {
         return "todo";
     }
 
-    @PostMapping("/todo")
+    @PostMapping("/app/todo")
     public String saveTodo(@ModelAttribute Todo todo, Model model) {
 
         todoService.saveTodo(todo);
         model.addAttribute("todoList", todoService.getTodo());
         model.addAttribute("todo", new Todo());
 
-        return "todo";
+        return "redirect:/app/todo";
     }
 
 }

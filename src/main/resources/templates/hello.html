@@ -35,18 +35,5 @@
 
 <hr>
 
-<form action="#" th:action="@{/add}" th:object="${todo}" method="post">
-    <label>
-        <input type="text" th:field="*{id}"/>
-    </label>
-    <label>
-        <input type="text" th:field="*{task}"/>
-    </label>
-    <label>
-        <input type="text" th:field="*{status}"/>
-    </label>
-    <input type="submit"/>
-</form>
-
 </body>
 </html>
