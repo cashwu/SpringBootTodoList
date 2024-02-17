@@ -17,6 +17,10 @@ public class HomeController {
     @GetMapping("/")
     public String index() {
 
+//        var bCryptPasswordEncoder = new BCryptPasswordEncoder();
+//        var encode = bCryptPasswordEncoder.encode("cash-1234");
+//        logger.info(encode);
+
         logger.info("index");
 
         return "Hello World";
