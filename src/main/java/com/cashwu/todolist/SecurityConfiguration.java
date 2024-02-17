@@ -25,7 +25,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests((auth) ->
-                        auth.anyRequest().authenticated()
+//                        auth.anyRequest().authenticated()
+                        auth.anyRequest().anonymous()
                 )
                 .httpBasic(Customizer.withDefaults());
 //                .authenticationManager(new CustomAuthManager());
@@ -35,7 +36,8 @@ public class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring().requestMatchers("/");
+//        return web -> web.ignoring().requestMatchers("/");
+        return web -> web.ignoring().anyRequest();
     }
 
     @Bean
