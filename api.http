@@ -32,3 +32,16 @@ Content-Type: application/json
 ###
 
 DELETE {{host}}/todo/1
+
+###
+
+POST {{host}}/person
+Content-Type: application/json
+
+{
+  "name" : "cash"
+}
+
+###
+
+GET {{host}}/person/1/todo

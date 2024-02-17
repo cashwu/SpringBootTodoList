@@ -1,7 +1,9 @@
 package com.cashwu.todolist.controller;
 
 import com.cashwu.todolist.entity.Todo;
+import com.cashwu.todolist.entity.Person;
 import com.cashwu.todolist.service.TodoService;
+import com.cashwu.todolist.service.PersonService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
@@ -23,9 +25,11 @@ public class TodoController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     private final TodoService todoService;
+    private final PersonService userService;
 
-    public TodoController(TodoService todoService) {
+    public TodoController(TodoService todoService, PersonService userService) {
         this.todoService = todoService;
+        this.userService = userService;
     }
 
     @Operation(summary = "get todos", description = "get all todo")
@@ -40,6 +44,22 @@ public class TodoController {
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(todo);
+    }
+
+    @GetMapping("/person/{id}/todo")
+    public ResponseEntity<Optional<Person>> getTodoByPersonId(@PathVariable Integer id) {
+
+        var todo = userService.getTodoByUserId(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(todo);
+    }
+
+    @PostMapping("/person")
+    public ResponseEntity<Person> savePerson(@RequestBody Person person) {
+
+        Person newPerson = userService.savePerson(person);
+
+        return ResponseEntity.status(HttpStatus.OK).body(newPerson);
     }
 
     @GetMapping("/todo/{id}")
