@@ -4,6 +4,8 @@ import com.cashwu.todolist.entity.Todo;
 import com.cashwu.todolist.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,8 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class TodoController {
 
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
     private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
@@ -29,6 +33,10 @@ public class TodoController {
     public ResponseEntity<Iterable<Todo>> todo() {
 
         var todo = todoService.getTodo();
+
+        logger.info("get todos --");
+        logger.error("get todos error --");
+        logger.warn("get todos warn --");
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(todo);
