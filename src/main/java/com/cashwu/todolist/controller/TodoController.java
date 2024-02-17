@@ -2,6 +2,8 @@ package com.cashwu.todolist.controller;
 
 import com.cashwu.todolist.entity.Todo;
 import com.cashwu.todolist.service.TodoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,7 @@ import java.util.Optional;
 /**
  * @author cash
  */
+@Tag(name = "todo controller", description = "todo api")
 @RestController
 @RequestMapping("/api")
 public class TodoController {
@@ -21,6 +24,7 @@ public class TodoController {
         this.todoService = todoService;
     }
 
+    @Operation(summary = "get todos", description = "get all todo")
     @GetMapping("/todo")
     public ResponseEntity<Iterable<Todo>> todo() {
 
