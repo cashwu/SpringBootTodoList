@@ -49,3 +49,22 @@ Content-Type: application/json
 ###
 
 GET {{host}}/person/1/todo
+
+
+###
+
+POST {{host}}/upload
+Content-Type: multipart/form-data; charset=utf-8; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="test.json"
+Content-Type: application/json
+
+< ./test.json
+--WebAppBoundary
+
+###
+POST {{host}}/upload
+Content-Type: application/x-www-form-urlencoded
+
+id = 999
