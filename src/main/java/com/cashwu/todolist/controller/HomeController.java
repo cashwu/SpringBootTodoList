@@ -1,5 +1,6 @@
 package com.cashwu.todolist.controller;
 
+import com.cashwu.todolist.MyProperties;
 import com.cashwu.todolist.service.JwtTokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +28,12 @@ public class HomeController {
 
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     private final JwtTokenService jwtTokenService;
+    private final MyProperties myProperties;
 
-    public HomeController(JwtTokenService jwtTokenService) {
+    public HomeController(JwtTokenService jwtTokenService,
+                          MyProperties myProperties) {
         this.jwtTokenService = jwtTokenService;
+        this.myProperties = myProperties;
     }
 
 
@@ -42,7 +46,7 @@ public class HomeController {
 
         logger.info("index");
 
-        return "Hello World";
+        return String.format("Hello World, Header : %s, Footer : %s", myProperties.getHeader(), myProperties.getFooter());
     }
 
     @PostMapping("/api/login")
