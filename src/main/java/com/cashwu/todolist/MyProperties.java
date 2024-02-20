@@ -16,4 +16,6 @@ public class MyProperties {
 
     private String header;
     private String footer;
+    private String video;
 }
+

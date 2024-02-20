@@ -2,6 +2,7 @@ package com.cashwu.todolist.controller;
 
 import com.cashwu.todolist.MyProperties;
 import com.cashwu.todolist.service.JwtTokenService;
+import com.cashwu.todolist.service.VideoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDate;
 
 /**
  * @author cash
@@ -29,11 +29,14 @@ public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     private final JwtTokenService jwtTokenService;
     private final MyProperties myProperties;
+    private final VideoService videoService;
 
     public HomeController(JwtTokenService jwtTokenService,
-                          MyProperties myProperties) {
+                          MyProperties myProperties,
+                          VideoService videoService) {
         this.jwtTokenService = jwtTokenService;
         this.myProperties = myProperties;
+        this.videoService = videoService;
     }
 
 
@@ -46,7 +49,14 @@ public class HomeController {
 
         logger.info("index");
 
-        return String.format("Hello World, Header : %s, Footer : %s", myProperties.getHeader(), myProperties.getFooter());
+        logger.info(String.format("Hello World, Header : %s, Footer : %s", myProperties.getHeader(), myProperties.getFooter()));
+
+        if (videoService != null) {
+
+            logger.info(videoService.toString());
+        }
+
+        return "Hello World ";
     }
 
     @PostMapping("/api/login")

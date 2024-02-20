@@ -1,5 +1,9 @@
 package com.cashwu.todolist;
 
+import com.cashwu.todolist.service.VideoService;
+import com.cashwu.todolist.service.VimeoService;
+import com.cashwu.todolist.service.YoutubeService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -42,4 +46,15 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(localeChangeInterceptor());
     }
 
+    @Bean
+    @ConditionalOnProperty(prefix = "my.app", name = "video", havingValue = "youtube")
+    public VideoService youtubeService() {
+        return new YoutubeService();
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = "my.app", name = "video", havingValue = "vimeo")
+    public VideoService vimeoService() {
+        return new VimeoService();
+    }
 }
