@@ -4,6 +4,7 @@ import com.cashwu.todolist.service.VideoService;
 import com.cashwu.todolist.service.VimeoService;
 import com.cashwu.todolist.service.YoutubeService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import java.util.Locale;
 
 @Configuration
+// 重點在於導入其它的 package ，加入容器用
+@EnableConfigurationProperties(MyProperties.class)
 public class WebConfig implements WebMvcConfigurer {
 
     /**

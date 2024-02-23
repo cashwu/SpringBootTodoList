@@ -56,7 +56,7 @@ public class HomeController {
             logger.info(videoService.toString());
         }
 
-        return "Hello World ";
+        return "Hello World " + myProperties.getFooter();
     }
 
     @PostMapping("/api/login")

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author cash
  */
-@Component
+//@Component
 @ConfigurationProperties(prefix = "my.app")
 @Getter
 @Setter
